@@ -1,0 +1,37 @@
+.fa-tiktok-w:before,
+.fa-tiktok:before {
+  content: url('/ALTANMYA_Bikar/static/tiktok-w.svg');
+  width : 14px;
+  display : block;
+}
+
+.fa-subscript-w:before,
+.fa-subscript:before {
+  content: url('/ALTANMYA_Bikar/static/tiktok-w.svg') !important;
+  width : 14px !important;
+  display : block !important;
+  margin : auto;
+}
+
+
+.fa-tiktok-d:before,
+.fa-tiktok:before {
+  content: url('/ALTANMYA_Bikar/static/tiktok-d.svg');
+  width : 14px;
+  display : block;
+}
+
+.o_brand_promotion p{
+    color: white;
+    font-size: 13px;
+    margin-bottom: -5px;
+}
+
+
+@media (max-width: 404px) {
+header .navbar-brand.logo img {
+    object-fit: contain;
+    display: block;
+    height: 3.75rem;
+    width: 71px;
+}

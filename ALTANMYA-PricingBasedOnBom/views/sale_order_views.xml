@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_order_form_bikar_inherit" model="ir.ui.view">
+            <field name="name">view.order.form.bikar.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet[1]/group[1]/group[1]/field[3]" position="after">
+                    <field name="customize"/>
+                </xpath>
+                <xpath expr="//group[2]/div[@class='o_row'][1]" position="after">
+                    <label for="update_prices_from_bom" string=" "/>
+                    <button name="update_prices_from_bom" type="object"
+                            string=" Update Unit Prices (Bikar)"
+                            help="Recompute price unit from bom"
+                            class="btn-link mb-1 px-0" icon="fa-refresh"
+                            confirm="This will update the price unit for each line."
+                            attrs="{'invisible': [('customize', '=', False)]}"/>
+                </xpath>
+                <xpath expr="//tree[1]/field[6]" position="after">
+                    <field name="customize" attrs="{'column_invisible': [('parent.customize', '=', False)]}"/>
+                </xpath>
+                <xpath expr="//tree[1]/field[7]" position="after">
+                    <field name="pricelist_id" invisible="1"/>
+                    <field name="mo_bom_id"
+                           attrs="{'column_invisible': [('parent.customize', '=', False)]}"
+                           context="{'default_type': 'normalWithPrice',
+                         'default_pricelist_id': pricelist_id,
+                         'default_product_tmpl_id': product_template_id,
+                         }"
+                    />
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_order_form_bikar_inherit22" model="ir.ui.view">
+            <field name="name">view.order.form.bikar.inherit22</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@class='oe_subtotal_footer oe_right'][1]/field[1]" position="after">
+                    <field name="estimated_installation_date_total" force_save="1" colspan="1" readonly="1"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="view_order_form_bikar_inherit_1" model="ir.ui.view">
+            <field name="name">view.order.form.bikar.inherit_1</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree[1]/field[@name='product_uom_qty']" position="after">
+                    <field name="total_installation_date_1" optional="hide" force_save="1"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

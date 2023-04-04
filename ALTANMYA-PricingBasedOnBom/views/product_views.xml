@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="product_template_bikar_inherit_form" model="ir.ui.view">
+            <field name="name">product.template.bikar.form.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//span[@class='d-inline-block'][2]" position="after">
+                    <span class="d-inline-block">
+                        <field name="customize"/>
+                        <label for="customize"/>
+                    </span>
+                </xpath>
+            </field>
+        </record>
+
+          <record id="product_template_bikar_inherit_form1" model="ir.ui.view">
+            <field name="name">product.template.bikar.form.inherit1</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//span[@class='d-inline-block'][3]" position="after">
+                    <span class="d-inline-block">
+                        <field name="pricing_type_square_tmpl"/>
+                        <label for="pricing_type_square_tmpl"/>
+                        <field name="pricing_type_component_tmpl"/>
+                        <label for="pricing_type_component_tmpl"/>
+                    </span>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

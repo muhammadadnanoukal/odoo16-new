@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="brand_promotion3" inherit_id="website_sale.brand_promotion">
+        <xpath expr="//t[@t-call='web.brand_promotion_message']" position="replace">
+            <t t-call="web.brand_promotion_message">
+                <t t-set="_message">
+                    <a target="_blank" href="https://tech.altanmya.net/">ALTANMYA – TECHNOLOGY SOLUTIONS</a>
+                </t>
+                <t t-set="_utm_medium" t-valuef="website"/>
+            </t>
+        </xpath>
+    </template>
+
+    <record id="custom_menu_catalog" model="website.menu">
+        <field name="name">Catalog</field>
+        <field name="url">/catalog</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">20</field>
+    </record>
+
+<!--    <template id="my_language_selector_inline" inherit_id="website.language_selector_inline">-->
+<!--    <xpath expr="//t[@t-foreach='languages']" position="replace">-->
+<!--        <t t-set="lang_obj" t-value="lang"/>-->
+<!--        <t t-if="lang_obj == 'ar'">-->
+<!--            <a t-attf-href="/{{ request.httprequest.full_path.split('/')[:2]|join('/') }}/en" class="list-inline-item btn btn-primary btn-sm">-->
+<!--                English-->
+<!--            </a>-->
+<!--        </t>-->
+<!--        <t t-else="">-->
+<!--            <a t-attf-href="/{{ request.httprequest.full_path.split('/')[:2]|join('/') }}/ar" class="list-inline-item btn btn-primary btn-sm">-->
+<!--                العربية-->
+<!--            </a>-->
+<!--        </t>-->
+<!--    </xpath>-->
+<!--    <xpath expr="//t[@t-call='website.language_selector_add_language']" position="replace">-->
+<!--        <t t-call="website.language_selector_add_language" t-args="widget=widget, lang_obj=False"/>-->
+<!--    </xpath>-->
+<!--</template>-->
+
+<!--    code al 5a9 b khaled-->
+<!--    <template id="language_selector_inherit_ya_habibi" inherit_id="portal.language_selector">-->
+<!--        <xpath expr="//div[1]/div[1]" position="replace">-->
+<!--            <t t-foreach="languages" t-as="lg">-->
+<!--                <t t-if="lg.code == 'en_US'">-->
+<!--                    <a href="/ar/" class="list-inline-item js_language_selector">العربية</a>-->
+<!--                </t>-->
+<!--                <t t-elif="lg.code == 'ar_SY'">-->
+<!--                    <a href="/en_GB/" class="list-inline-item js_language_selector">English</a>-->
+<!--                </t>-->
+<!--            </t>-->
+<!--        </xpath>-->
+<!--    </template>-->
+
+
+<!-- and context.get('lang') == 'en_US'-->
+<!-- and context.get('lang') == 'ar_SY'-->
+<!--    <template id="language_selector_inline_custom" inherit_id="website.language_selector_inline" primary="True">-->
+<!--        <xpath expr="//t[@t-foreach='languages']" position="attributes">-->
+<!--            <attribute name="t-if" t-value="language.code == 'en_US' and context.get('lang') == 'ar_SY' or language.code == 'ar_SY' and context.get('lang') == 'en_US'"/>-->
+<!--        </xpath>-->
+<!--        <xpath expr="//t[@t-foreach='languages']" position="replace">-->
+<!--            <t t-foreach="languages" t-as="language">-->
+<!--                <t t-if="language.code == 'en_US' and context.get('lang') == 'ar_SY'">-->
+<!--                    <a href="/ar/" class="list-inline-item js_language_selector" data-lang-code="ar_SY" role="button">العربية</a>-->
+<!--                </t>-->
+<!--                <t t-elif="language.code == 'ar_SY' and context.get('lang') == 'en_US'">-->
+<!--                    <a href="/en_GB/" class="list-inline-item js_language_selector" data-lang-code="en_US" role="button">English</a>-->
+<!--                </t>-->
+<!--            </t>-->
+<!--        </xpath>-->
+<!--    </template>-->
+
+</odoo>

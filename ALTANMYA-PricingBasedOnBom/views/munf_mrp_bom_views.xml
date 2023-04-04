@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mrp_bom_form_view_inherit_extension_1" model="ir.ui.view">
+        <field name="name">mrp.bom.form.view.inherit.extension.1</field>
+        <field name="model">mrp.bom</field>
+        <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+        <field name="arch" type="xml">
+            <!--            <xpath expr="//page[1]/field[1]/tree[1]/field[@name='product_id']" position="replace">-->
+            <!--                <field name="product_id" context="{'default_detailed_type': 'product'}" domain="[('company_id', 'in', [company_id, False]), ('pricing_type_square_tmpl', '=', True),-->
+            <!--                                         ('pricing_type_square_tmpl', '=', 'test')]"/>-->
+            <!--            </xpath>-->
+            <xpath expr="//div[@class='o_row'][1]" position="after">
+                <field name="pricelist_id"
+                       attrs="{'invisible': [('type', 'not in', ['normalWithPrice', 'assembled'])]}"/>
+            </xpath>
+            <xpath expr="//field[@name='pricelist_id']" position="after">
+                <label for="pricing_type_square" string="Pricing Type"
+                       attrs="{'invisible': [('type', 'not in', ['normalWithPrice', 'assembled'])]}"/>
+                <div attrs="{'invisible': [('type', 'not in', ['normalWithPrice', 'assembled'])]}">
+                    <label for="pricing_type_square" string="Square Meter"
+                           attrs="{'invisible': [('type', 'not in', ['normalWithPrice', 'assembled'])]}"/>
+                    <field name="pricing_type_square"
+                           attrs="{'invisible': [('type', 'not in', ['normalWithPrice', 'assembled'])]}"
+                           style="margin-right:10px;"/>
+
+                    <label for="pricing_type_component" string="Component"
+                           attrs="{'invisible': [('type', 'not in', ['normalWithPrice', 'assembled'])]}"/>
+                    <field name="pricing_type_component"
+                           attrs="{'invisible': [('type', 'not in', ['normalWithPrice', 'assembled'])]}"
+                           style="margin-right:10px;"/>
+                </div>
+                <!--                <field name="pricing_type_label" attrs="{'invisible': [('type', '!=', 'normalWithPrice')]}"/>-->
+
+
+            </xpath>
+            <xpath expr="//page[1]/field[1]/tree[1]/field[6]" position="after">
+                <field name="estimated_installation_date"
+                       attrs="{'column_invisible': [('parent.type', '!=', 'normalWithPrice')], 'readonly': True}"
+                       optional="hide" force_save="1"/>
+            </xpath>
+            <xpath expr="//page[1]/field[1]/tree[1]/field[8]" position="after">
+                <field name="check_field" invisible="1"/>
+                <field name="price_unit"
+                       attrs="{'column_invisible': [('parent.type', '!=', 'normalWithPrice')], 'readonly': [('check_field', '!=', True)]}"/>
+            </xpath>
+            <xpath expr="//field[13]" position="after">
+                <field name="price_subtotal" attrs="{'column_invisible': [('parent.type', '!=', 'normalWithPrice')]}"/>
+            </xpath>
+            <xpath expr="//notebook[1]" position="after">
+                <group>
+                    <field name="total_amount" attrs="{'invisible': [('type', '!=', 'normalWithPrice')]}"/>
+                    <field name="total_installation_date" attrs="{'invisible': [('type', '!=', 'normalWithPrice')]}"
+                           force_save="1"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="mrp_bom_form_view_inherit_extension_2" model="ir.ui.view">
+        <field name="name">mrp.bom.form.view.inherit.extension.2</field>
+        <field name="model">mrp.bom</field>
+        <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@class='text-start'][1]" position="replace">
+                <field name="attachments_count" class="text-start" string="Attachments Count"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="mrp_form_view_inherit_extension" model="ir.ui.view">
+        <field name="name">mrp.form.view.inherit.extension</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="mrp.view_mrp_product_template_form_inherited"/>
+        <field name="arch" type="xml">
+            <xpath expr="//label[@for='days_to_prepare_mo']" position="before">
+                <field name="estimated_installation_date_tmpl" string="Estimated Installation Date" force_save="1"/>
+            </xpath>
+        </field>
+    </record>
+
+<!--    <record id="mrp_bom_line_view_form_test" model="ir.ui.view">-->
+<!--        <field name="name">mrp.bom.line.view.form.test</field>-->
+<!--        <field name="model">mrp.bom.line</field>-->
+<!--        <field name="inherit_id" ref="mrp.mrp_bom_line_view_form"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//group[1]/field[1]" position="before">-->
+<!--                <field name="bom_id.pricing_type_square" invisible="1"/>-->
+<!--            </xpath>-->
+
+<!--        </field>-->
+<!--    </record>-->
+</odoo>
